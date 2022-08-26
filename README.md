@@ -3,6 +3,9 @@
 ## Overview
 - OS: Mac (Catinal)
 
+## Link
+- [K8s](https://www.youtube.com/watch?v=d6WC5n9G_sM)
+
 ## Prerequisite
 - minikube `brew install minikube`
 - kubtectl `brew install kubectl`
@@ -60,8 +63,10 @@
 - `kubectl expose deployment [name_deployment] --port=[external_port] --target-post=[container_port]`
 - ex: kubectl expose deployment nginx-depl --port=8080 --target-port=80
 - delete service `kubectl delete [name-service]`
+- delete all `kubectl delete all --all`
 
-
+## User file Yaml
+- `kubectl apply -f [name]` || `[name] can be deployment, servce`
 
 # DEMO
 
@@ -69,3 +74,9 @@
 - have account docker hub
 - build image `docker build -t [name-image] .`
 - login to docker `docker login`
+
+
+## Rolling Update
+- st1: change image, re-build and push it to docker-hub
+- st2: update image in deployment `kubectl set image deployment [name-deployment] [name-pod]=[new-image]`
+- checking status of update => `kubectl rollout status deploy [name-deployment]`
